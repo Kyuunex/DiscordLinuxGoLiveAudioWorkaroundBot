@@ -10,7 +10,7 @@ discord mic input is encoded in mono, while bots can stream stereo audio.
 ## Installation Instructions
 
 1. Install `git` and `Python 3.6` (or newer) if you don't already have them.
-2. Clone this repository using this command `git clone https://github.com/Kyuunex/Momiji.git`
+2. Clone this repository using this command `git clone https://github.com/Kyuunex/DiscordLinuxGoLiveAudioWorkaroundBot.git`
 3. Make sure you have `ffmpeg` and `pavucontrol` installed.
 4. Create a folder named `data`, then create `token.txt` inside it. Then put your bot token in it. 
 5. To start the bot, run `DiscordLinuxGoLiveAudioWorkaroundBot.py`.
