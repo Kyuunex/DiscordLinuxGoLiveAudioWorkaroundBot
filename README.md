@@ -59,13 +59,14 @@ I explored many solutions to this problem, spent countless hours on it and makin
     - OBS streaming to a custom RTMP server and screensharing an mpv or vlc playback of that. Creating a virtual audio output devices and make obs pick up audio from that, so voice loopback wouldn't happen
         - This is painfully slow in a vm
         - This can be done on a dedicated computer through LAN but there is a good 5 second delay which I was not able to reduce
+            - Most of the delay is probably happening during the encoding. Maybe we could move to an `ffmpeg` based solution?
     - Capturing with a capture card and doing a USB passthrough to a VM, playing back with mpv or vlc and screensharing that. 
         - Still need to deal with playing back audio, vlc can do both video and audio at the same time
         - Capture cards are expensive, cheap ones have shit quality both video and audio wise. the $16 MACROSILICON one has mono audio anyways, which defeats the purpose of all this, mostly.
         - Painfully slow in a vm probably
         - Could happen on a dedicated pc, could probably send audio through aux or network somehow if capture card does mono
     - But srsly, just playing back a video stream in a vm takes a sizable amount of processing power.
-    - Using other software to send acreen visual and audio to another machine. and screensharing that. something like [zonescreen](https://zoneos.com/zonescreen/) but can also do audio in the same application. 
+    - Using other software to send acreen visual and audio to another machine. and screensharing that. something like [zonescreen](https://zoneos.com/zonescreen/) but can also do audio in the same application. Most likely `ffmpeg` could do the job.
 4. Using [discord_arch_electron](https://aur.archlinux.org/packages/discord_arch_electron/) package from AUR. this uses system installation of electron instead of what discord bundles. 
     - So in an event this bug is fixed in electron, we may get the fix instantly
     - I'm not good enough to just fix this bug but this is a good starting point if you wanna give it a try
