@@ -3,8 +3,8 @@ It's been months since Go Live was rolled out for Linux users of Discord,
 but as of 2020/07/29, they still haven't fixed the issue where audio is not being captured from the application that is being streamed.
 
 In fact, they actually denied my bug report
-![](https://i.imgur.com/nBfuX4q.png)
-with the following reason
+![](https://i.imgur.com/nBfuX4q.png)  
+with the following reason  
 ![](https://i.imgur.com/qMBF3PP.png)  
 
 So, a while ago, I wrote a workaround bot. This bot will allow you to stream audio through it. 
