@@ -35,7 +35,7 @@ The advantage of using this rather than using audio routing solutions through mi
 5. Type `golive.start` in a chat where the bot can read. This will make the bot join and start streaming your microphone.
 6. Using `pavucontrol`, locate the recording session that the bot is doing, and change the input the monitor of your STREAM_AUDIO. For some reason, in `pavucontrol` the sink may show up as `Output to Null Device`
 7. profit???
-8. When you are done, type `golive.start` in a chat where the bot can read.
+8. When you are done, type `golive.stop` in a chat where the bot can read.
 9. After that, you can just right click in `pavucontrol` on the loopback device and click on terminate. Or you could just type `pulseaudio -k` in the terminal.
 
 ---
