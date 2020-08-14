@@ -4,6 +4,7 @@ import os
 
 
 async def add_admins(self):
+    from modules import permissions
     async with await self.db.execute("SELECT * FROM admins") as cursor:
         admin_list = await cursor.fetchall()
 
@@ -17,7 +18,8 @@ async def add_admins(self):
             await self.db.execute("INSERT INTO admins VALUES (?, ?)", [str(app_info.owner.id), "1"])
             print(f"Added {app_info.owner.name} to admin list")
         await self.db.commit()
-        print("please restart the bot to load the admin database")
+
+        permissions.load_admins_from_db()
 
 
 def create_tables():

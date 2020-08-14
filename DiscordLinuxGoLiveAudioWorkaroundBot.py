@@ -15,6 +15,13 @@ user_extensions_directory = "user_extensions"
 if not os.path.exists('data'):
     print("Please configure this bot according to readme file.")
     sys.exit("data folder and it's contents are missing")
+if not os.path.exists(user_extensions_directory):
+    os.makedirs(user_extensions_directory)
+
+if os.environ.get('GOLIVE_PREFIX'):
+    command_prefix = os.environ.get('GOLIVE_PREFIX')
+else:
+    command_prefix = "/"
 
 first_run.create_tables()
 
@@ -71,6 +78,5 @@ class DiscordLinuxGoLiveAudioWorkaroundBot(commands.Bot):
         await first_run.add_admins(self)
 
 
-client = DiscordLinuxGoLiveAudioWorkaroundBot(command_prefix="golive.")
+client = DiscordLinuxGoLiveAudioWorkaroundBot(command_prefix=command_prefix)
 client.run(bot_token)
-

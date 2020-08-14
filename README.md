@@ -21,7 +21,7 @@ The advantage of using this rather than using audio routing solutions through mi
 5. To start the bot, run `DiscordLinuxGoLiveAudioWorkaroundBot.py`.
 
 ## How to use
-1. Start the bot. If it's the first time you are starting the bot, restart the bot.
+1. Start the bot. 
 2. Using the commands bellow, make a virtual audio sink named `STREAM_AUDIO`
     ```sh
     pacmd load-module module-null-sink sink_name=STREAM_AUDIO
@@ -32,10 +32,10 @@ The advantage of using this rather than using audio routing solutions through mi
     ```sh
     pactl load-module module-loopback latency_msec=1 channels=2
     ```
-5. Type `golive.start` in a chat where the bot can read. This will make the bot join and start streaming your microphone.
+5. Type `/go_live` in a chat where the bot can read, DM recommended. This will make the bot join and start streaming your microphone.
 6. Using `pavucontrol`, locate the recording session that the bot is doing, and change the input the monitor of your STREAM_AUDIO. For some reason, in `pavucontrol` the sink may show up as `Output to Null Device`
 7. profit???
-8. When you are done, type `golive.stop` in a chat where the bot can read.
+8. When you are done, type `/go_offline` in a chat where the bot can read.
 9. After that, you can just right click in `pavucontrol` on the loopback device and click on terminate. Or you could just type `pulseaudio -k` in the terminal.
 
 ---
