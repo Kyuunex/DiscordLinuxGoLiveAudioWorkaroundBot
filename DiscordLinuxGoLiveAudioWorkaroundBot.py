@@ -23,7 +23,7 @@ if os.environ.get('GOLIVE_PREFIX'):
 else:
     command_prefix = "/"
 
-first_run.create_tables()
+first_run.ensure_tables()
 
 initial_extensions = [
     "cogs.AudioStream",

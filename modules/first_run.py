@@ -22,11 +22,10 @@ async def add_admins(self):
         permissions.load_admins_from_db()
 
 
-def create_tables():
-    if not os.path.exists(database_file):
-        conn = sqlite3.connect(database_file)
-        c = conn.cursor()
-        c.execute("CREATE TABLE config (setting, parent, value, flag)")
-        c.execute("CREATE TABLE admins (user_id, permissions)")
-        conn.commit()
-        conn.close()
+def ensure_tables():
+    conn = sqlite3.connect(database_file)
+    c = conn.cursor()
+    c.execute("CREATE TABLE IF NOT EXISTS config (setting, parent, value, flag)")
+    c.execute("CREATE TABLE IF NOT EXISTS admins (user_id, permissions)")
+    conn.commit()
+    conn.close()
