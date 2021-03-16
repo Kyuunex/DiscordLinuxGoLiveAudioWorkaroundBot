@@ -11,9 +11,12 @@ with the following reason
 ![](https://i.imgur.com/qMBF3PP.png)  
 
 So, a while ago, I wrote a workaround bot. This bot will allow you to stream audio through it. 
-The advantage of using this rather than using audio routing solutions through microphone input of discord is that 
-discord mic input is encoded in mono, while bots can stream stereo audio. Mono audio sounds terrible, 
-especially if you are streaming a rhythm game like osu!  
+The advantages of using this rather than using audio routing solutions through microphone input of discord are that:
+1. discord mic input is encoded in mono, while bots can stream stereo audio. Mono audio sounds terrible, 
+   especially if you are streaming a rhythm game like osu!
+2. You will need to give up noise suppression and etc when doing it through the mic.
+3. Allow the end user audio level adjustment of the stream audio and your voice individually.
+4. Not everyone wants to listen to your stream, so, they won't be forced to listen to it.
 
 ---
 
