@@ -1,5 +1,5 @@
-# DiscordLinuxGoLiveAudioWorkaroundBot 
-It's been months since Go Live was rolled out for Linux users of Discord, 
+# Discord Linux Go-Live Audio Workaround Bot 
+It's been over a year since Go Live was rolled out for Linux users of Discord, 
 but as of 2021/03/16, 
 they still haven't fixed the issue where audio is not being captured from the application that is being streamed.
 You can call this a missing feature but if I join someone's stream, 
