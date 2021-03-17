@@ -57,7 +57,7 @@ The advantages of using this rather than using audio routing solutions through m
 
 ## My adventures of exploring this bug.
 I explored this bug greatly, 
-apparently it's a [bug in electron from 2 years ago](https://github.com/electron/electron/issues/10515) but 
+apparently it's a [bug in electron from 3 and a half years ago](https://github.com/electron/electron/issues/10515) but 
 it was closed without actually being fixed.
 I explored many solutions to this problem, spent countless hours on it 
 and making this bot was the best solution I could come up at the time.
