@@ -43,7 +43,7 @@ The advantages of using this rather than using audio routing solutions through m
     ```sh
     pactl load-module module-loopback latency_msec=1 channels=2
     ```
-5. Type `gl.join` followed by the voice channel ID in a chat where the bot can read, DM recommended. 
+5. Type `gl.join` (optionally followed by the voice channel ID in a chat where the bot can read). 
    This will make the bot join and start streaming your microphone.
 6. Using `pavucontrol`, locate the recording session that the bot is doing, 
    and change the input the monitor of your STREAM_AUDIO. 
