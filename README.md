@@ -105,6 +105,12 @@ and making this bot was the best solution I could come up at the time.
           just make a PKGBUILD repo that applies your patch, put on github, doesn't matter.
         - This is like, the best solution to this problem, if you are good enough. 
 5. Reverse engineer how Discord sends a stream and make a small console based app to run an encode with and stream.
-   - No discord bot lib has implemented something like this, so you're on your own.
+   - preferably it would just emulate an RTMP server where OBS or ffmpeg would stream to
+     and it would forward that to discord.
+      - although, discord does not stream in h264, it streams in vp9 iirc to save bandwidth.
+   - No discord bot lib has implemented something like this, so you're on your own
+   - having a client that does not behave 100% like discord servers expect it to, 
+     may flag your account and get you banned. 
+     but hey, what else do we linux users even expect for companies like these?
    - This is probably something I'll do if I lose patience by waiting.
    
