@@ -73,7 +73,7 @@ and making this bot was the best solution I could come up at the time.
     - ~~Not sure if this is broken in the web app or the Chrome/Chromium is broken.~~
         - ~~If on the web app, perhaps a browser extension can fix this? I'm not good enough to make one~~
         - ~~UPDATE: this was a bug with discord~~
-    - UPDATE, I reported this [bug](https://bugs.discord.com/T956) and after deveral months, they marked it as fixed, around the time they added this feature to mac. 
+    - UPDATE, I reported this [bug](https://bugs.discord.com/T956) and after several months, they marked it as fixed, around the time they added this feature to mac. 
         - But it applies noise suppression on it. But at the time I reported it, it transported no audio at all. Maybe this will be fixed in few weeks? if not I will just file a new bug report.
         - But having this only limits us to screensharing browser tabs with sound. It's better than nothing I guess.
             - Maybe we could use obs/ffmpeg to stream to a browser tab and screenshare a playback of that? we could also locally mute the tab while it's still sharing audio
