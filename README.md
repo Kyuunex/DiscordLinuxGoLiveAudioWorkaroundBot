@@ -63,16 +63,20 @@ I explored many solutions to this problem, spent countless hours on it
 and making this bot was the best solution I could come up at the time.
 ### Other solutions I tried include:
 1. Streaming through the web version
-    - Tried in Chromium
-        - Even the `Share audio` button does not work when sharing a tab
-    - Tried in Firefox 
-        - Discord normally won't let you, so I had to set the user agent to represent Chromium
-    - Even on Windows, streaming using the web version in Chrome does not capture audio
-        - Even when streaming just a tab and checking `Share audio` button
-    - Not sure if this is broken in the web app or the Chrome/Chromium is broken. 
-        - If on the web app, perhaps a browser extension can fix this? I'm not good enough to make one
-    - UPDATE, I reported this [bug](https://bugs.discord.com/T956) and they partially fixed it. 
-     it applies noise suppression on it.
+    - ~~Tried in Chromium~~
+        - ~~Even the `Share audio` button does not work when sharing a tab~~
+    - ~~Tried in Firefox~~
+        - ~~Discord normally won't let you, so I had to set the user agent to represent Chromium~~
+            - ~~UPDATE: user agenet spooffing is no longer needed~~
+    - ~~Even on Windows, streaming using the web version in Chrome does not capture audio~~
+        - ~~Even when streaming just a tab and checking `Share audio` button~~
+    - ~~Not sure if this is broken in the web app or the Chrome/Chromium is broken.~~
+        - ~~If on the web app, perhaps a browser extension can fix this? I'm not good enough to make one~~
+        - ~~UPDATE: this was a bug with discord~~
+    - UPDATE, I reported this [bug](https://bugs.discord.com/T956) and after deveral months, they marked it as fixed, around the time they added this feature to mac. 
+        - But it applies noise suppression on it. But at the time I reported it, it transported no audio at all. Maybe this will be fixed in few weeks? if not I will just file a new bug report.
+        - But having this only limits us to screensharing browser tabs with sound. It's better than nothing I guess.
+            - Maybe we could use obs/ffmpeg to stream to a browser tab and screenshare a playback of that? we could also locally mute the tab while it's still sharing audio
 2. Running Windows version of Discord in wine. 
     - The screenshare would not work. The `DiscordHookHelper.exe` would crash. 
       Tried various options relating to Hardware acceleration on/off, didn't help.
@@ -94,17 +98,22 @@ and making this bot was the best solution I could come up at the time.
           could probably send audio through aux or network somehow if capture card does mono,
           mpv is very flexible
     - But srsly, just playing back a video stream in a vm takes a sizable amount of processing power.
-    - Did I mention that attempting to screenshare in VMWare blue-screens the whole VM?
+    - Did I mention that attempting to screenshare in VMWare blue-screens the whole VM? Well, unless you disable Hardware Acceleration in Virtual machine settings.
     - For a solution like this, using `ffmpeg` with a custom rtmp server sounds like the best idea. 
       on the windows end, we screenshare an mpv view.
 4. Using [discord_arch_electron](https://aur.archlinux.org/packages/discord_arch_electron/) package from AUR. 
    this uses system installation of electron instead of what discord bundles. 
-    - So in an event this bug is fixed in electron, we may get the fix instantly
+    - So in an event this bug is fixed in electron, we may get the fix instantly (very unlikely, read next section)
     - I'm not good enough to just fix this bug but this is a good starting point if you wanna give it a try
         - and maybe give them a PR after fixing, and if they reject it, 
           just make a PKGBUILD repo that applies your patch, put on github, doesn't matter.
         - This is like, the best solution to this problem, if you are good enough. 
-5. Reverse engineer how Discord sends a stream and make a small console based app to run an encode with and stream.
+5. A BetterDiscord plugin
+    - I tried this approach as well and got absolutely nowhere.
+    - This could go along with [discord_arch_electron](https://aur.archlinux.org/packages/discord_arch_electron/) in an event this is fixed in electron.
+    - Maybe if there is someone who knows how to make BetterDiscord plugins could rig something up?
+        - Maybe give us a sink we can direct audio to.
+6. Reverse engineer how Discord sends a stream and make a small console based app to run an encode with and stream.
    - preferably it would just emulate an RTMP server where OBS or ffmpeg would stream to
      and it would forward that to discord.
       - although, discord does not stream in h264, it streams in vp9 iirc to save bandwidth.
