@@ -20,15 +20,19 @@ The advantages of using this rather than using audio routing solutions through m
 3. Allow the end user audio level adjustment of the stream audio and your voice individually.
 4. Not everyone wants to listen to your stream, so, they won't be forced to listen to it.
 
+To clarify, this bot will stream the audio to a voice channel the exact same way those music bots do.
+
 ---
 
 ## Installation Instructions
 
 1. Literally get the .py file from this repo, name it what you want and put it in your PATH if you want to.
 2. Make sure you have `ffmpeg` and `pavucontrol` installed.
-4. Set `GOLIVE_BOT_TOKEN` env var with the bot token.
+4. Set `GOLIVE_BOT_TOKEN` env var with the bot token. 
 4. Set `GOLIVE_BOT_PREFIX` env var with your desired command prefix. (optional, default is `gl.`)
 5. To start the bot, literally run it.
+
+In case you don't know, to get a bot token, register a new app [here](https://discord.com/developers/applications), create a bot, and copy the token. not the client secret. the token.
 
 ## How to use
 1. Start the bot. 
