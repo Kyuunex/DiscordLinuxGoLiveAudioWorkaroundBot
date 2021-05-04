@@ -102,6 +102,8 @@ and making this bot was the best solution I could come up at the time.
           but there is a good 5-second delay which I was not able to reduce
             - Most of the delay is probably happening during the encoding. 
               Maybe we could move to an `ffmpeg` based solution?
+        - For a solution like this, using `ffmpeg` with a custom rtmp server sounds like the best idea. 
+      on the windows end, we screen-share an MPV view.
     - Capturing with a capture card and playing back with mpv or vlc and screen-sharing that. 
         - Still need to deal with playing back audio, vlc can do both video and audio at the same time
         - Capture cards are expensive, cheap ones have mediocre quality both video and audio wise. 
@@ -113,23 +115,26 @@ and making this bot was the best solution I could come up at the time.
             Just playing back a video stream in a VM takes a sizable amount of processing power.
     - Did I mention that attempting to screen-share in VMWare blue-screens the whole VM? Well, 
       unless you disable Hardware Acceleration in Virtual machine settings.
-    - For a solution like this, using `ffmpeg` with a custom rtmp server sounds like the best idea. 
-      on the windows end, we screen-share an MPV view.
 4. Using [discord_arch_electron](https://aur.archlinux.org/packages/discord_arch_electron/) package from AUR. 
    this uses system installation of electron instead of what discord bundles. 
-    - So in an event this bug is fixed in electron, we may get the fix instantly (very unlikely, read next section)
+    - So in an event this bug is fixed in electron, we may get the fix instantly 
+      - or if we decide to throw together a hacked version of electron 
+        that just makes a sink when appropriate function is called
+      - very unlikely, because it may require some other modifications on the web app side
+        - it's possible we can do those with BetterDiscord, see the next section.
     - I'm not good enough to just fix this bug but this is a good starting point if you want to give it a try
         - and maybe give them a PR after fixing, and if they reject it, 
           just make a PKGBUILD repo that applies your patch, put on GitHub, doesn't matter.
         - This is like, the best solution to this problem, if you are good enough. 
 5. A BetterDiscord plugin
     - I tried this approach as well and got absolutely nowhere, due to the lack of experience I have.
+      - There is/was literally zero documentation about the relevant things necessary for this to happen.
     - This could go along with [discord_arch_electron](https://aur.archlinux.org/packages/discord_arch_electron/) 
       in an event this is fixed in electron.
     - Maybe if there is someone who knows how to make BetterDiscord plugins could rig something up?
         - Maybe give us a sink we can direct audio to.
     - Since this was fixed on a Mac, maybe someone could try that 'Emulator' plugin BD has 
-      when it gets updated on canary and see where it goes
+      when on canary it gets updated to support the new BD and see where it goes
 6. Reverse engineer how Discord sends a stream and make a small console based app to run an encode with and stream.
    - preferably it would just emulate an RTMP server where OBS or ffmpeg would stream to, 
      and it would forward that to discord.
@@ -140,4 +145,5 @@ and making this bot was the best solution I could come up at the time.
      may flag your account and get you banned. 
      but hey, what else do we linux users even expect for companies like these?
      
-I'm still very inexperienced, so this is the best I can come up with. For me, adding this to Chromium 
+I'm still very inexperienced, so this is the best I can come up with. 
+For me, adding this to Chromium sounds like the most likely and sustainable thing with the least risk for a ban.
