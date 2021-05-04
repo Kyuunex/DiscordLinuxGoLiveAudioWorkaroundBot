@@ -1,14 +1,16 @@
 # Discord Linux Go-Live Audio Workaround Bot 
 It's been over a year since Go Live was rolled out for Linux users of Discord, 
-but as of 2021/03/16, 
+but as of 2021/05/04, 
 they still haven't fixed the issue where audio is not being captured from the application that is being streamed.
-You can call this a missing feature but if I join someone's stream, 
-a normal human will complain about an audio being absent as a problem, not as a missing feature.
+You can call this a missing feature if you really wanna be technical, but an 'average' end user will disagree.
 
 In fact, they actually denied my bug report
 ![](https://i.imgur.com/nBfuX4q.png)  
 with the following reason  
 ![](https://i.imgur.com/qMBF3PP.png)  
+
+I would have been happy if they at least gave us some sort of a workaround, like starting a capture from an automatically created sink and telling us to divert app audio to it, and it will be sent the same way 
+the Go Live audio is sent. But nope.
 
 So, a while ago, I wrote a workaround bot. This bot will allow you to stream audio through it. 
 The advantages of using this rather than using audio routing solutions through microphone input of discord are that:
