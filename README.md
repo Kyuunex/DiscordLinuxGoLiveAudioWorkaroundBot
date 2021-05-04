@@ -89,31 +89,32 @@ and making this bot was the best solution I could come up at the time.
             - Maybe we could use obs/ffmpeg to stream to a browser tab and screen-share a playback of that? 
               we could also locally mute the tab while it's still sharing audio
             - Or maybe someone can convince the Chromium devs to add this for Linux as well. Maybe through PipeWire?
+            - I wonder if someone can add this to Chromium via browser extensions? 
+              I don't know what their limits are though.
 2. Running Windows version of Discord in wine. 
     - The screen-share would not work. The `DiscordHookHelper.exe` would crash. 
       Tried various options relating to Hardware acceleration on/off, didn't help.
-3. Dedicated, real Windows environment for running discord.
+3. Dedicated, real Windows environment for running Discord.
     - OBS streaming to a custom RTMP server and screen-sharing a mpv playback of that. 
       Creating a virtual audio output devices and make obs pick up audio from that, so voice loopback wouldn't happen
-        - This is painfully slow in a vm
+        - This is painfully slow in a VM
         - This can be done on a dedicated computer through LAN 
           but there is a good 5-second delay which I was not able to reduce
             - Most of the delay is probably happening during the encoding. 
               Maybe we could move to an `ffmpeg` based solution?
-    - Capturing with a capture card and doing a USB pass-through to a VM, 
-      playing back with mpv or vlc and screen-sharing that. 
+    - Capturing with a capture card and playing back with mpv or vlc and screen-sharing that. 
         - Still need to deal with playing back audio, vlc can do both video and audio at the same time
         - Capture cards are expensive, cheap ones have mediocre quality both video and audio wise. 
           the $16 MACROSILICON one has mono audio anyways, which defeats the purpose of all this, mostly.
-        - Painfully slow in a vm probably
-        - Could happen on a dedicated pc, 
-          could probably send audio through aux or network somehow if capture card does mono,
-          mpv is very flexible
-    - But seriously, just playing back a video stream in a vm takes a sizable amount of processing power.
+          - To get around this, we can separately send the audio, whether though LAN or AUX cable. 
+            Then we could just stitch it using MPV.
+        - In case of a VM, USB-passthough is a thing, 
+          - Although as previously started, this is painfully slow in a VM. 
+            Just playing back a video stream in a VM takes a sizable amount of processing power.
     - Did I mention that attempting to screen-share in VMWare blue-screens the whole VM? Well, 
       unless you disable Hardware Acceleration in Virtual machine settings.
     - For a solution like this, using `ffmpeg` with a custom rtmp server sounds like the best idea. 
-      on the windows end, we screen-share a mpv view.
+      on the windows end, we screen-share an MPV view.
 4. Using [discord_arch_electron](https://aur.archlinux.org/packages/discord_arch_electron/) package from AUR. 
    this uses system installation of electron instead of what discord bundles. 
     - So in an event this bug is fixed in electron, we may get the fix instantly (very unlikely, read next section)
@@ -139,4 +140,4 @@ and making this bot was the best solution I could come up at the time.
      may flag your account and get you banned. 
      but hey, what else do we linux users even expect for companies like these?
      
-I'd say 
+I'm still very inexperienced, so this is the best I can come up with. For me, adding this to Chromium 
