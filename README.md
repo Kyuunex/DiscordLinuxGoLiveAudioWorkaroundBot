@@ -1,7 +1,6 @@
 # Discord Linux Go-Live Audio Workaround Bot 
 
 <details>
-
   <summary>Backstory</summary>
 
 It's been over a year since Go Live was rolled out for Linux users of Discord, 
@@ -70,7 +69,6 @@ create a bot, and copy the token. not the client secret. the token.
 ---
 
 <details>
-
     <summary>My adventures of exploring this bug.</summary>
 
 I explored this bug greatly, 
