@@ -1,4 +1,9 @@
 # Discord Linux Go-Live Audio Workaround Bot 
+
+<details>
+
+  <summary>Backstory</summary>
+
 It's been over a year since Go Live was rolled out for Linux users of Discord, 
 but as of 2021/05/04, 
 they still haven't fixed the issue where audio is not being captured from the application that is being streamed.
@@ -22,6 +27,7 @@ The advantages of using this rather than using audio routing solutions through m
 4. Not everyone wants to listen to your stream, so, they won't be forced to listen to it.
 
 To clarify, this bot will stream the audio to a voice channel the exact same way those music bots do.
+</details>
 
 ---
 
@@ -63,12 +69,16 @@ create a bot, and copy the token. not the client secret. the token.
 
 ---
 
-## My adventures of exploring this bug.
+<details>
+
+    <summary>My adventures of exploring this bug.</summary>
+
 I explored this bug greatly, 
 apparently it's a [bug in electron from 3 and a half years ago](https://github.com/electron/electron/issues/10515) but 
 it was closed without actually being fixed.
 I explored many solutions to this problem, spent countless hours on it 
 and making this bot was the best solution I could come up at the time.
+
 ### Other solutions I tried, include:
 1. Streaming through the web version
     - ~~Tried in Chromium~~
@@ -84,7 +94,8 @@ and making this bot was the best solution I could come up at the time.
     - UPDATE, I reported this [bug](https://bugs.discord.com/T956) and after several months, they marked it as fixed, 
       around the time they added this feature to mac. 
         - But it applies noise suppression on it. But at the time I reported it, it transported no audio at all. 
-          Maybe this will be fixed in few weeks? if not I will just file a new bug report.
+          - ~~Maybe this will be fixed in few weeks? if not I will just file a new bug report.~~  
+            UPDATE: ![](https://cdn.discordapp.com/attachments/846761018977943572/875387083496251433/2021-08-12T1833254215659970400.png)
         - But having this only limits us to screen-sharing browser tabs with sound. It's better than nothing I guess.
             - Maybe we could use obs/ffmpeg to stream to a browser tab and screen-share a playback of that? 
               we could also locally mute the tab while it's still sharing audio
@@ -94,6 +105,7 @@ and making this bot was the best solution I could come up at the time.
 2. Running Windows version of Discord in wine. 
     - The screen-share would not work. The `DiscordHookHelper.exe` would crash. 
       Tried various options relating to Hardware acceleration on/off, didn't help.
+    - I imagine many APIs required for this to happen may not be implemented in wine.
 3. Dedicated, real Windows environment for running Discord.
     - OBS streaming to a custom RTMP server and screen-sharing a mpv playback of that. 
       Creating a virtual audio output devices and make obs pick up audio from that, so voice loopback wouldn't happen
@@ -105,6 +117,7 @@ and making this bot was the best solution I could come up at the time.
         - For a solution like this, using `ffmpeg` with a custom rtmp server sounds like the best idea. 
       on the windows end, we screen-share an MPV view.
     - Capturing with a capture card and playing back with mpv or vlc and screen-sharing that. 
+        - could easily mirror the screen with Xorg.conf
         - Still need to deal with playing back audio, vlc can do both video and audio at the same time
         - Capture cards are expensive, cheap ones have mediocre quality both video and audio wise. 
           the $16 MACROSILICON one has mono audio anyways, which defeats the purpose of all this, mostly.
@@ -115,13 +128,15 @@ and making this bot was the best solution I could come up at the time.
             Just playing back a video stream in a VM takes a sizable amount of processing power.
     - Did I mention that attempting to screen-share in VMWare blue-screens the whole VM? Well, 
       unless you disable Hardware Acceleration in Virtual machine settings.
+    - I am not sure how well hardware accelerated video playback is a thing in virtual machines?
+    - Also, when I mention, virtual machines being slow, I am not talking about PCIe pass-though. that can help out a lot.
 4. Using [discord_arch_electron](https://aur.archlinux.org/packages/discord_arch_electron/) package from AUR. 
    this uses system installation of electron instead of what discord bundles. 
-    - So in an event this bug is fixed in electron, we may get the fix instantly 
+    - So in an event this bug is fixed in electron, we may get the fix instantly (maybe with a BetterDiscord plugin mixed in?)
       - or if we decide to throw together a hacked version of electron 
         that just makes a sink when appropriate function is called
       - very unlikely, because it may require some other modifications on the web app side
-        - it's possible we can do those with BetterDiscord, see the next section.
+        - as stated, it's possible we can do those with BetterDiscord, see the next section.
     - I'm not good enough to just fix this bug but this is a good starting point if you want to give it a try
         - and maybe give them a PR after fixing, and if they reject it, 
           just make a PKGBUILD repo that applies your patch, put on GitHub, doesn't matter.
@@ -147,3 +162,5 @@ and making this bot was the best solution I could come up at the time.
      
 I'm still very inexperienced, so this is the best I can come up with. 
 For me, adding this to Chromium sounds like the most likely and sustainable thing with the least risk for a ban.
+
+</details>
