@@ -16,6 +16,7 @@ with the following reason
 I would have been happy if they at least gave us some sort of workaround, like starting a capture from an automatically 
 created sink and telling us to divert app audio to it, and it will be sent the same way 
 the Go Live audio is sent, but nope.
+</details>
 
 So, a while ago, I wrote a workaround bot. This bot will allow you to stream audio through it. 
 The advantages of using this rather than using audio routing solutions through microphone input of discord are that:
@@ -26,7 +27,6 @@ The advantages of using this rather than using audio routing solutions through m
 4. Not everyone wants to listen to your stream, so, they won't be forced to listen to it.
 
 To clarify, this bot will stream the audio to a voice channel the exact same way those music bots do.
-</details>
 
 ---
 
