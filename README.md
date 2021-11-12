@@ -1,5 +1,10 @@
 # Discord Linux Go-Live Audio Workaround Bot 
 
+UPDATE: a little while ago, someone managed to get Go-Live audio to work by streaming via a browser 
+and applying custom scripts. You can check it out 
+[here](https://www.reddit.com/r/linux_gaming/comments/pmhfmq/the_proper_way_of_screen_sharing_with_desktop/).
+It might we worth a try if you don't wanna use my bot.
+
 <details>
   <summary>Backstory</summary>
 
@@ -94,6 +99,7 @@ and making this bot was the best solution I could come up at the time.
         - But it applies noise suppression on it. But at the time I reported it, it transported no audio at all. 
           - ~~Maybe this will be fixed in few weeks? if not I will just file a new bug report.~~  
             UPDATE: ![](https://cdn.discordapp.com/attachments/846761018977943572/875387083496251433/2021-08-12T1833254215659970400.png)
+            UPDATE 2: someone made a script that fixes this, see [this](https://openuserjs.org/scripts/samantas5855/WebRTC_effects_remover)
         - But having this only limits us to screen-sharing browser tabs with sound. It's better than nothing I guess.
             - Maybe we could use obs/ffmpeg to stream to a browser tab and screen-share a playback of that? 
               we could also locally mute the tab while it's still sharing audio
