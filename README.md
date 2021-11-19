@@ -38,10 +38,11 @@ To clarify, this bot will stream the audio to a voice channel the exact same way
 ## Installation Instructions
 
 1. Literally get the .py file from this repo, name it what you want and put it in your PATH if you want to.
-2. Make sure you have `ffmpeg` and `pavucontrol` installed.
+2. Install `discord.py` with voice: `python3 -m pip install -U "discord.py[voice]"`
+3. Make sure you have `ffmpeg` and `pavucontrol` installed.
 4. Set `GOLIVE_BOT_TOKEN` env var with the bot token. 
-4. Set `GOLIVE_BOT_PREFIX` env var with your desired command prefix. (optional, default is `gl.`)
-5. To start the bot, literally run it.
+5. Set `GOLIVE_BOT_PREFIX` env var with your desired command prefix. (optional, default is `gl.`)
+6. To start the bot, literally run it.
 
 In case you don't know, to get a bot token, register a new app [here](https://discord.com/developers/applications), 
 create a bot, and copy the token. not the client secret. the token.
