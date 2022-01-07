@@ -38,7 +38,8 @@ To clarify, this bot will stream the audio to a voice channel the exact same way
 ## Installation Instructions
 
 1. Literally get the .py file from this repo, name it what you want and put it in your PATH if you want to.
-2. Install pycord: `pip install -U git+https://github.com/Pycord-Development/pycord`
+2. Install Pycord: `pip install -U git+https://github.com/Pycord-Development/pycord`
+   + You may also need to install `PyNaCl` using: `pip3 install PyNaCl`
 3. Make sure you have `ffmpeg` and `pavucontrol` installed.
 4. Set `GOLIVE_BOT_TOKEN` env var with the bot token. 
 5. To start the bot, literally run it.
