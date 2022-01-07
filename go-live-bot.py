@@ -110,8 +110,17 @@ async def join(ctx, channel_id=None):
 
     for voice_client in bot.voice_clients:
         if voice_client.channel == target_channel:
-            # ffmpeg -f pulse -i default
-            audio_source = discord.FFmpegOpusAudio("default", bitrate=64, before_options="-f pulse")
+            # ffmpeg -f pulse -i default -map_metadata -1
+            # -f opus -c:a libopus -ar 48000 -ac 2 -b:a 48k
+            # -loglevel warning -application lowdelay pipe:1
+
+            audio_source = discord.FFmpegOpusAudio(
+                "default",
+                bitrate=48,
+                before_options="-f pulse",
+                options="-application lowdelay"
+            )
+            
             voice_client.play(audio_source)
             await ctx.respond(f"joined {target_channel.mention}")
 
