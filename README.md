@@ -70,7 +70,12 @@ create a bot, and copy the token. not the client secret. the token.
 7. profit???
 8. When you are done, type `/leave` in a chat where the bot can read.
 9. After that, you can just right-click in `pavucontrol` on the loopback device and click on terminate. 
-   Or you could just type `pulseaudio -k` in the terminal.
+   Or you could just type `pulseaudio -k` in the terminal.  
+
+---
+
+Note: if you are having problems with audio cutting out, 
+try `export PULSE_LATENCY_MSEC=5`
 
 ---
 
