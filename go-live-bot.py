@@ -1,14 +1,8 @@
 #!/usr/bin/env python3
 import discord
-from discord.ext import commands
 import sys
 import os
 
-
-if os.environ.get('GOLIVE_BOT_PREFIX'):
-    command_prefix = os.environ.get('GOLIVE_BOT_PREFIX')
-else:
-    command_prefix = "gl."
 
 if os.environ.get('GOLIVE_BOT_TOKEN'):
     bot_token = os.environ.get('GOLIVE_BOT_TOKEN')
@@ -17,10 +11,10 @@ else:
 
 owner_list = []
 
-intents = discord.Intents.default()
-intents.members = True
-# bot = commands.Bot(command_prefix=command_prefix, intents=intents)
-bot = commands.Bot(command_prefix=command_prefix)
+# intents = discord.Intents.default()
+# intents.members = True
+# bot = commands.Bot(intents=intents)
+bot = discord.Bot()
 
 
 @bot.event
@@ -40,26 +34,25 @@ async def on_ready():
         print(f"Added {app_info.owner.name} to owner list")
 
     print("------")
-    print(f"Use this command prefix: {command_prefix}")
     print(f"Available commands:")
-    print(f"{command_prefix}join <channel_id>")
-    print(f"{command_prefix}leave")
+    print(f"/join <channel_id>")
+    print(f"/leave")
     print(f"------")
 
 
-@bot.command()
+@bot.slash_command()
 async def leave(ctx):
     if not int(ctx.author.id) in owner_list:
         return
     ctx.voice_client.stop()
     await ctx.voice_client.disconnect()
     try:
-        await ctx.message.add_reaction("✅")
+        await ctx.respond("i left")
     except:
         print("channel left")
 
 
-@bot.command()
+@bot.slash_command()
 async def join(ctx, channel_id=None):
     if not int(ctx.author.id) in owner_list:
         return
@@ -69,7 +62,7 @@ async def join(ctx, channel_id=None):
     if channel_id:
         target_channel = bot.get_channel(int(channel_id))
         if not target_channel:
-            print("can't find a channel with that ID")
+            await ctx.respond("can't find a channel with that ID")
             return
         await target_channel.connect()
     else:
@@ -78,7 +71,7 @@ async def join(ctx, channel_id=None):
                 target_channel = ctx.author.voice.channel
                 await target_channel.connect()
             else:
-                print("You are not connected to a voice channel in this server")
+                await ctx.respond("You are not connected to a voice channel in this server")
                 return
         else:
             if ctx.voice_client is None:
@@ -112,7 +105,7 @@ async def join(ctx, channel_id=None):
                 return
 
     if not target_channel:
-        print("I am not able to find a channel to join in")
+        await ctx.respond("I am not able to find a channel to join in")
         return
 
     for voice_client in bot.voice_clients:
@@ -120,10 +113,7 @@ async def join(ctx, channel_id=None):
             # ffmpeg -f pulse -i default
             audio_source = discord.FFmpegPCMAudio("default", before_options="-f pulse", options="")
             voice_client.play(audio_source)
-            try:
-                await ctx.message.add_reaction("✅")
-            except:
-                print(f"joined {target_channel.name}")
+            await ctx.respond(f"joined {target_channel.mention}")
 
 
 bot.run(bot_token)

@@ -38,11 +38,10 @@ To clarify, this bot will stream the audio to a voice channel the exact same way
 ## Installation Instructions
 
 1. Literally get the .py file from this repo, name it what you want and put it in your PATH if you want to.
-2. Install `discord.py` with voice: `python3 -m pip install -U "discord.py[voice]"`
+2. Install pycord: `pip install -U git+https://github.com/Pycord-Development/pycord`
 3. Make sure you have `ffmpeg` and `pavucontrol` installed.
 4. Set `GOLIVE_BOT_TOKEN` env var with the bot token. 
-5. Set `GOLIVE_BOT_PREFIX` env var with your desired command prefix. (optional, default is `gl.`)
-6. To start the bot, literally run it.
+5. To start the bot, literally run it.
 
 In case you don't know, to get a bot token, register a new app [here](https://discord.com/developers/applications), 
 create a bot, and copy the token. not the client secret. the token.
@@ -54,6 +53,7 @@ create a bot, and copy the token. not the client secret. the token.
     pacmd load-module module-null-sink sink_name=STREAM_AUDIO
     pacmd update-sink-proplist STREAM_AUDIO device.description=STREAM_AUDIO
     ```
+   Note: use `pactl` instead of `pacmd` if you are using PipeWire.
 3. Send application audio to this sink. If you can't do it through the application, try using `pavucontrol` for that.
 4. Using the following command, create a stereo virtual audio loopback session. 
    Using `pavucontrol` make the loopback device take audio from the monitor of our sink we just made. 
@@ -62,13 +62,13 @@ create a bot, and copy the token. not the client secret. the token.
     ```sh
     pactl load-module module-loopback latency_msec=1 channels=2
     ```
-5. Type `gl.join` (optionally followed by the voice channel ID in a chat where the bot can read). 
+5. Type `/join` (optionally followed by the voice channel ID in a chat where the bot can read). 
    This will make the bot join and start streaming your microphone.
 6. Using `pavucontrol`, locate the recording session that the bot is doing, 
    and change the input the monitor of your STREAM_AUDIO. 
    For some reason, in `pavucontrol` the sink may show up as `Output to Null Device`
 7. profit???
-8. When you are done, type `gl.leave` in a chat where the bot can read.
+8. When you are done, type `/leave` in a chat where the bot can read.
 9. After that, you can just right-click in `pavucontrol` on the loopback device and click on terminate. 
    Or you could just type `pulseaudio -k` in the terminal.
 
