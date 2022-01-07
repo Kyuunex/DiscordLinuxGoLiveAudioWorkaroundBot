@@ -28,10 +28,10 @@ async def on_ready():
     if app_info.team:
         for team_member in app_info.team.members:
             owner_list.append(int(team_member.id))
-            print(f"Added {team_member.name} to owner list")
+            print(f"Added {team_member.name} to the bot operator list")
     else:
         owner_list.append(int(app_info.owner.id))
-        print(f"Added {app_info.owner.name} to owner list")
+        print(f"Added {app_info.owner.name} to the bot operator list")
 
     print("------")
     print(f"Available commands:")
@@ -47,7 +47,7 @@ async def leave(ctx):
     ctx.voice_client.stop()
     await ctx.voice_client.disconnect()
     try:
-        await ctx.respond("i left")
+        await ctx.respond(":ok_hand:")
     except:
         print("channel left")
 
