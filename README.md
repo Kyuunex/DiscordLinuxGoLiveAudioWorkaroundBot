@@ -38,6 +38,8 @@ To clarify, this bot will stream the audio to a voice channel the exact same way
 ## Installation Instructions
 
 1. Literally get the .py file from this repo, name it what you want and put it in your PATH if you want to.
+   + The py file with classic in the name uses old style commands, scraping messages for, prefixes.
+   + The py file without classic in the name uses slash commands.
 2. Install Pycord: `pip install -U git+https://github.com/Pycord-Development/pycord`
    + You may also need to install `PyNaCl` using: `pip3 install PyNaCl`
 3. Make sure you have `ffmpeg` and `pavucontrol` installed.
