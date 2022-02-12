@@ -96,7 +96,7 @@ async def join(ctx, channel_id=None):
                     print("Using this bot through DMs without specifying a channel ID, "
                           "requires you enable SERVER MEMBERS INTENT over at "
                           f" https://discord.com/developers/applications/{bot.user.id}/bot")
-                    print("then you need to edit this script, uncomment line 22 and comment 23.")
+                    print("then you need to edit this script, uncomment line 16 and comment 17.")
                     print("if you are seeing this message, you haven't did that")
                     return
             elif ctx.voice_client.is_playing():
