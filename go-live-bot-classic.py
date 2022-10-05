@@ -18,9 +18,9 @@ else:
 owner_list = []
 
 intents = discord.Intents.default()
-intents.members = True
-# bot = commands.Bot(intents=intents, command_prefix=command_prefix)
-bot = commands.Bot(command_prefix=command_prefix)
+intents.message_content = True
+# intents.members = True
+bot = commands.Bot(intents=intents, command_prefix=command_prefix)
 
 
 @bot.event
