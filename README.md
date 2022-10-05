@@ -1,9 +1,11 @@
 # Discord Linux Go-Live Audio Workaround Bot 
 
-UPDATE: a little while ago, someone managed to get Go-Live audio to work by streaming via a browser 
-and applying custom scripts. You can check it out 
-[here](https://www.reddit.com/r/linux_gaming/comments/pmhfmq/the_proper_way_of_screen_sharing_with_desktop/).
-It might we worth a try if you don't wanna use my bot.
+### Other projects made by others, that try to deal with this problem:
+   - someone managed to get Go-Live audio to work by streaming via a browser and applying custom scripts. 
+     You can check it out [here](https://reddit.com/pmhfmq/).
+   - [A custom client that supports streaming with audio](https://github.com/maltejur/discord-screenaudio)
+  
+These may be worth a try if you don't want to use my bot.
 
 <details>
   <summary>Backstory</summary>
