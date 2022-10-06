@@ -16,6 +16,7 @@ else:
 if os.environ.get('GOLIVE_BOT_TOKEN'):
     bot_token = os.environ.get('GOLIVE_BOT_TOKEN')
 else:
+    # bot_token = ""  # You can also put your bot token here, uncomment this line and comment the next line
     sys.exit("please set GOLIVE_BOT_TOKEN env var to your bot token")
 
 owner_list = []
