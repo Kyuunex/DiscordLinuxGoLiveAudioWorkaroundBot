@@ -3,6 +3,13 @@ import discord
 import sys
 import os
 
+# This version is only tested on Py-cord. When discord.py devs decided to shut down the project,
+# I moved the project to Py-cord, and got the slash commands somewhat working.
+# Since discord.py returned, I am in a process of moving back to it.
+# And so, this version of the bot does not work with discord.py.
+# It requires a lot of work to get it to work. Contributions are appreciated.
+# Meanwhile you can use the classic version of this bot with prefixed commands!
+
 
 FFMPEG_PULSEAUDIO_SOURCE = "default"  # you can change this to CUSTOM_SINK.monitor (EXPERIMENTAL)
 OPUS_ENCODE_BITRATE = 48  # Kbps
