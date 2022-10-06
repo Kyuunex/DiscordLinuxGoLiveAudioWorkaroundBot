@@ -41,41 +41,49 @@ To clarify, this bot will stream the audio to a voice channel the exact same way
 
 1. Literally get the .py file from this repo, name it what you want and put it in your PATH if you want to.
    + The py file with classic in the name uses old style commands, scraping messages for, prefixes.
-   + The py file without classic in the name uses slash commands.
+   + The py file without classic in the name uses slash commands. **(This one is still work in progress. Use classic.)**
 2. Install discord.py 2.0 with voice support: `pip3 install discord.py[voice]==2.0.1`
    + You may also need to install `PyNaCl` using: `pip3 install PyNaCl`
 3. Make sure you have `ffmpeg` and `pavucontrol` installed.
 4. Set `GOLIVE_BOT_TOKEN` env var with the bot token. 
-5. To start the bot, literally run it.
 
 In case you don't know, to get a bot token, register a new app [here](https://discord.com/developers/applications), 
-create a bot, and copy the token. not the client secret. the token.
+create a bot, and copy the token. not the client secret. the token.  
+You also need to enable MESSAGE CONTENT intent for the classic command version 
+and SERVER MEMBERS intent for being able to use the join commands in DMs without specifying a channel ID.
 
 ## How to use
-1. Start the bot. 
-2. Using the commands bellow, make a virtual audio sink named `STREAM_AUDIO`
+1. Using the commands bellow, make a virtual audio sink named `STREAM_AUDIO`
     ```sh
     pacmd load-module module-null-sink sink_name=STREAM_AUDIO
     pacmd update-sink-proplist STREAM_AUDIO device.description=STREAM_AUDIO
     ```
    Note: use `pactl` instead of `pacmd` if you are using PipeWire.
+1b. (optional, experimental) At the top of the file in `FFMPEG_PULSEAUDIO_SOURCE`, you can put `CUSTOM_SINK.monitor` and skip step 7. 
+2. Start the bot. (To start the bot, literally run it.)
 3. Send application audio to this sink. If you can't do it through the application, try using `pavucontrol` for that.
-4. Using the following command, create a stereo virtual audio loopback session. 
-   Using `pavucontrol` make the loopback device take audio from the monitor of our sink we just made. 
-   For some reason, in `pavucontrol` the sink may show up as `Output to Null Device`. 
-   This is, so you can hear the application audio yourself without a delay.
+4. Using the following command, create a stereo virtual audio loopback session.
     ```sh
     pactl load-module module-loopback latency_msec=1 channels=2
     ```
-5. Type `/join` (optionally followed by the voice channel ID in a chat where the bot can read). 
+5. Using `pavucontrol` make the loopback device take audio from the monitor of our sink we just made. 
+   For some reason, in `pavucontrol` the sink may show up as `Output to Null Device`. 
+   This is, so you can hear the application audio yourself without a delay.
+6. Type `/join` (optionally followed by the voice channel ID in a chat where the bot can read). 
    This will make the bot join and start streaming your microphone.
-6. Using `pavucontrol`, locate the recording session that the bot is doing, 
+7. Using `pavucontrol`, locate the recording session that the bot is doing, 
    and change the input the monitor of your STREAM_AUDIO. 
    For some reason, in `pavucontrol` the sink may show up as `Output to Null Device`
-7. profit???
-8. When you are done, type `/leave` in a chat where the bot can read.
-9. After that, you can just right-click in `pavucontrol` on the loopback device and click on terminate. 
-   Or you could just type `pulseaudio -k` in the terminal.  
+8. profit???
+9. When you are done, type `/leave` in a chat where the bot can read.
+10. After that, you can just right-click in `pavucontrol` on the loopback device and click on terminate. 
+    Or you could just type `pulseaudio -k` in the terminal.  
+
+---
+
+### KNOWN ISSUES:
+If you get an error like `default: Generic error in an external library`, I have no idea what causes this. 
+You are welcome to find a solution and make a PR or create an issue. I'll investigate when I have time.
 
 ---
 
