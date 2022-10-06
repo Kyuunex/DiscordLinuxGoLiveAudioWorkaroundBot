@@ -51,7 +51,7 @@ async def leave(ctx):
     await ctx.voice_client.disconnect()
     try:
         await ctx.respond(":ok_hand:")
-    except:
+    except discord.Forbidden:
         print("channel left")
 
 
