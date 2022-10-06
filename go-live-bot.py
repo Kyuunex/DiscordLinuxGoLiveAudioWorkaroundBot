@@ -4,6 +4,9 @@ import sys
 import os
 
 
+FFMPEG_PULSEAUDIO_SOURCE = "default"  # you can change this to CUSTOM_SINK.monitor (EXPERIMENTAL)
+OPUS_ENCODE_BITRATE = 48  # Kbps
+
 if os.environ.get('GOLIVE_BOT_TOKEN'):
     bot_token = os.environ.get('GOLIVE_BOT_TOKEN')
 else:
@@ -115,8 +118,8 @@ async def join(ctx, channel_id=None):
             # -loglevel warning -application lowdelay pipe:1
 
             audio_source = discord.FFmpegOpusAudio(
-                "default",
-                bitrate=48,
+                FFMPEG_PULSEAUDIO_SOURCE,
+                bitrate=OPUS_ENCODE_BITRATE,
                 before_options="-f pulse",
                 options="-application lowdelay"
             )
