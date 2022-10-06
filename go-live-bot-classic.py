@@ -23,7 +23,7 @@ owner_list = []
 
 intents = discord.Intents.default()
 intents.message_content = True
-# intents.members = True
+intents.members = True
 bot = commands.Bot(intents=intents, command_prefix=command_prefix)
 
 
@@ -107,8 +107,9 @@ async def join(ctx, channel_id=None):
                     print("Using this bot through DMs without specifying a channel ID, "
                           "requires you enable SERVER MEMBERS INTENT over at "
                           f" https://discord.com/developers/applications/{bot.user.id}/bot")
-                    print("then you need to edit this script, uncomment line 22 and comment 23.")
-                    print("if you are seeing this message, you haven't did that")
+                    print("if you are seeing this message, you did not enable this")
+                    print("and either commented out intents.members or set it to False, "
+                          "otherwise the bot would not start")
                     return
             elif ctx.voice_client.is_playing():
                 ctx.voice_client.stop()
