@@ -105,8 +105,8 @@ try `export PULSE_LATENCY_MSEC=5`
     <summary>My adventures of exploring this bug.</summary>
 
 I explored this bug greatly, 
-apparently it's a [bug in electron from 3 and a half years ago](https://github.com/electron/electron/issues/10515) but 
-it was closed without actually being fixed.
+apparently it's a [bug in electron from 5+ years ago](https://github.com/electron/electron/issues/10515) but
+it was closed without actually being fixed, presumably waiting for upstream, Chrmium to do something about it.
 I explored many solutions to this problem, spent countless hours on it 
 and making this bot was the best solution I could come up at the time.
 
@@ -126,8 +126,8 @@ and making this bot was the best solution I could come up at the time.
       around the time they added this feature to mac. 
         - But it applies noise suppression on it. But at the time I reported it, it transported no audio at all. 
           - ~~Maybe this will be fixed in few weeks? if not I will just file a new bug report.~~  
-            UPDATE: ![](https://cdn.discordapp.com/attachments/846761018977943572/875387083496251433/2021-08-12T1833254215659970400.png)
-            UPDATE 2: someone made a script that fixes this, see [this](https://openuserjs.org/scripts/samantas5855/WebRTC_effects_remover)
+            - UPDATE: ![](https://cdn.discordapp.com/attachments/846761018977943572/875387083496251433/2021-08-12T1833254215659970400.png)
+            - UPDATE 2: someone made a script that fixes this, see [this](https://openuserjs.org/scripts/samantas5855/WebRTC_effects_remover)
         - But having this only limits us to screen-sharing browser tabs with sound. It's better than nothing I guess.
             - Maybe we could use obs/ffmpeg to stream to a browser tab and screen-share a playback of that? 
               we could also locally mute the tab while it's still sharing audio
