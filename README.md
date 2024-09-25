@@ -6,9 +6,9 @@ Discord intends to eventually provide native audio sharing via PipeWire as confi
 These workarounds at this point only exist for while we wait.
 
 ### Projects made by others, that try to deal with this problem:
-   - someone managed to get Go-Live audio to work by streaming via a browser and applying custom scripts. 
+   - [Vesktop](https://github.com/Vencord/Vesktop)
+   - someone managed to get Go-Live audio to work by streaming via a browser and applying custom scripts.
      You can check it out [here](https://reddit.com/pmhfmq/).
-   - [A custom client that supports streaming with audio](https://github.com/maltejur/discord-screenaudio)
   
 These may be worth a try if you don't want to use my bot.
 
