@@ -43,7 +43,7 @@ async def on_ready():
     print("------")
     print(f"Use this command prefix: {command_prefix}")
     print(f"Available commands:")
-    print(f"{command_prefix}join <channel_id>")
+    print(f"{command_prefix}join")
     print(f"{command_prefix}leave")
     print(f"------")
 
