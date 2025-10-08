@@ -20,7 +20,7 @@ The advantages of using this rather than using audio routing solutions through m
 
 1. Pick a .py file from this repo, name it what you want and put it in your PATH if you want to.
     + `go-live-bot-classic.py` -- uses old style prefixed commands, scraping messages.
-    + `go-live-bot-slash.py` -- uses slash commands. **(This one is still work in progress. Use classic.)**
+    + `go-live-bot-slash.py` -- uses slash commands.
 2. Make sure the file is executable (`chmod +x go-live-bot-classic.py`)
 3. Install discord.py 2.x with voice support: `pip3 install discord.py==2.6.3`
     + You may also need to install `PyNaCl` using: `pip3 install PyNaCl`
