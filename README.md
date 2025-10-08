@@ -5,7 +5,7 @@ to a voice channel the exact same way those music bots do.
 
 For the longest time (5+ years) Discord didn't bother to capture Go-Live audio from Linux, during which I made this project. 
 Now it does though, but unfortunately, it is mono, and it seems like it is downmixing it server side. 
-Good news is, bots don't suffer from this issue, so this project is sticking around for probably 6 more years. 😞
+Good news is, bots don't suffer from this issue, so this project is sticking around for probably 5 more years. 😞
 
 The advantages of using this rather than using audio routing solutions through microphone input of Discord are that:
 1. Discord mic input is encoded in mono, while bots can stream stereo audio. Mono audio sounds terrible, 
