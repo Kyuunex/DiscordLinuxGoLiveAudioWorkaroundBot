@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import discord
-from discord import app_commands
 import sys
 import os
 
@@ -14,9 +13,8 @@ else:
 
 owner_list = []
 
-intents = discord.Intents.default()
-bot = discord.Client(intents=intents)
-tree = app_commands.CommandTree(bot)
+bot = discord.Bot()
+
 
 @bot.event
 async def on_ready():
@@ -35,35 +33,35 @@ async def on_ready():
         print(f"Added {app_info.owner.name} to the bot operator list")
 
     print("------")
-    print("Waiting to finish syncing the slash commands...")
-    await tree.sync()
-    print("Slash commands synced globally!")
     print(f"Available commands:")
     print(f"/join")
     print(f"/leave")
     print(f"------")
 
 
-@tree.command(name="leave", description="Leave the VC")
-async def leave(ctx: discord.Interaction):
-    if int(ctx.user.id) not in owner_list:
+@bot.slash_command()
+async def leave2(ctx):
+    if not int(ctx.author.id) in owner_list:
         return
-    ctx.guild.voice_client.stop()
-    await ctx.guild.voice_client.disconnect()
-    await ctx.response.send_message(":ok_hand:")
+    ctx.voice_client.stop()
+    await ctx.voice_client.disconnect()
+    try:
+        await ctx.respond(":ok_hand:")
+    except discord.Forbidden:
+        print("channel left")
 
 
-@tree.command(name="join", description="Join the VC")
-async def join(ctx: discord.Interaction):
-    if not int(ctx.user.id) in owner_list:
+@bot.slash_command()
+async def join2(ctx):
+    if not int(ctx.author.id) in owner_list:
         return
 
-    if ctx.guild.voice_client and ctx.guild.voice_client.is_playing():
-        ctx.guild.voice_client.stop()
-        await ctx.guild.voice_client.disconnect()
+    if ctx.voice_client and ctx.voice_client.is_playing():
+        ctx.voice_client.stop()
+        await ctx.voice_client.disconnect()
 
     if type(ctx.channel) != discord.VoiceChannel:
-        await ctx.response.send_message("type the command in a voice channel you wish me to join")
+        await ctx.respond("type the command in a voice channel you wish me to join")
         return
 
     target_channel = ctx.channel
@@ -75,11 +73,10 @@ async def join(ctx: discord.Interaction):
             audio_source = PulseAudioSource()
 
             voice_client.play(
-                audio_source,
-                application="lowdelay"
+                audio_source
             )
 
-    await ctx.response.send_message(f"Joined {target_channel.mention}!")
+            await ctx.respond(f"joined {target_channel.mention}")
 
 
 bot.run(bot_token)
