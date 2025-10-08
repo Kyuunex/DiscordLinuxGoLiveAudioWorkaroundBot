@@ -6,11 +6,20 @@ import os
 
 from pulseaudio_source import PulseAudioSource
 
+config_dir_path = os.path.join(os.path.expanduser("~"), ".local", "share", "go-live-bot")
+token_file_path = os.path.join(config_dir_path, "token.txt")
+
+bot_token = None
+
+if os.path.exists(token_file_path):
+    with open(token_file_path, "r+") as token_file:
+        bot_token = token_file.read().strip()
+
 if os.environ.get('GOLIVE_BOT_TOKEN'):
     bot_token = os.environ.get('GOLIVE_BOT_TOKEN')
-else:
-    # bot_token = ""  # You can also put your bot token here, uncomment this line and comment the next line
-    sys.exit("please set GOLIVE_BOT_TOKEN env var to your bot token")
+
+if not bot_token:
+    sys.exit("i need the bot token to work. either set GOLIVE_BOT_TOKEN env var or put it in: " + token_file_path)
 
 owner_list = []
 
