@@ -18,14 +18,15 @@ The advantages of using this rather than using audio routing solutions through m
 
 ## Installation Instructions
 
-1. Pick a .py file from this repo, name it what you want and put it in your PATH if you want to.
+1. Pick a .py file from this repo.
     + `go-live-bot-classic.py` -- uses old style prefixed commands, scraping messages.
     + `go-live-bot-slash.py` -- uses slash commands.
 2. Make sure the file is executable (`chmod +x go-live-bot-classic.py`)
-3. Install discord.py 2.x with voice support: `pip3 install discord.py==2.6.3`
-    + You may also need to install `PyNaCl` using: `pip3 install PyNaCl`
-4. Make sure you have `ffmpeg` and `pavucontrol` installed.
-5. Set `GOLIVE_BOT_TOKEN` environment variable with the bot token. 
+3. Install discord.py 2.x with some dependencies: 
+   + Arch Linux users can do `paru -S python-discord python-pynacl`
+   + if you want to create a virtual environment, inside you do `pip3 install discord.py[voice] PyNaCl`
+4. Make sure you have `ffmpeg` and `pavucontrol` installed as well.
+5. Set `GOLIVE_BOT_TOKEN` environment variable with the bot token or put it in `~/.local/share/go-live-bot/token.txt`
 
 To get a bot token, register a new app [here](https://discord.com/developers/applications), 
 create a bot, and copy the token (not the client secret).  
